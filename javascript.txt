@@ -1,0 +1,46 @@
+Archivo de Gojan Holguin...
+
+Cosas basicas en Javascript
+
+actualmente en Ecmascript version 6 ya no es necesario poner el ";". se aclara que ecmascript
+es el mismo javascript.
+
+var es para el llamamiento de variables, pero es un recuerso viejo por lo cual no es necesario utilizarlo
+
+let para variables y se recomienda actualmente, mas que el var
+const para constantes
+
+let resibe cualquier tipo de dato, sea entero, string u otro
+
+let name = 'gohan'
+let age = 18
+let status = true
+let array = [1, 2, 3]
+let object = {
+	color: 'blue',
+	language: 'spanish'
+}
+
+console.log(typeof parseInt(age))
+
+el console.log imprime en la consola del navegador
+el typeof es para verificar el tipo de dato de la variable
+
+
+const title = document.querySelector
+('#h1-title')
+
+const title1 = documento.getElementById
+('h1-title')
+
+console.log(title)
+console.log(title.textContent)
+
+title.style.color = 'blue'
+
+
+08/10/2021
+DOM - document object model
+
+Todo elemento del dom debe convertirse en una varible o constante
+para que pueda validar los datos
