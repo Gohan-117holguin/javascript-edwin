@@ -1,34 +1,74 @@
 const URL = "https://rickandmortyapi.com/api/character/"
 const mainCard = document.querySelector('#main')
 const cards = document.getElementById('card')
-const templateCard = document.getElementById('template-cards').contains
-const changeCharacters = document.getElementById('change-results')
-const allCharacters = document.getElementById('all-results')
+const templateCard = document.getElementById('template-cards').content
+const changeCharacters = document.getElementById('change-characters')
 const fragment = document.createDocumentFragment()
 
-function showCards(data){
+document.addEventListener('DOMContentLoaded', ()=>{
+    FetchApi()
+})
 
-    data.forEach(results => {
-        templateCard.querySelector('#title-card').textContent = results.name
-        templateCard.querySelector('#p-card-gender').textContent = results.gender
-        templateCard.querySelector('#p-card-status').textContent = results.status
-        templateCard.querySelector('#img-card').setAttribute("src", results.image)
+function showCards(array1){
 
+    if (changeCharacters.value == 'all') {
+
+        cards.innerHTML = ''
+        array1.forEach(arrayResults => {
+            templateCard.querySelector('#title-card').textContent = arrayResults.name
+            templateCard.querySelector('#p-card-gender').textContent = arrayResults.gender
+            templateCard.querySelector('#p-card-status').textContent = arrayResults.status
+            templateCard.querySelector('#img-card').src = arrayResults.image
+
+            const clone = templateCard.cloneNode(true)
+            fragment.appendChild(clone)
+
+            cards.appendChild(fragment)
+        })
+
+    } else {
+
+        cards.innerHTML = ''
+        const array2 = array1.filter(arrayC => arrayC.name === changeCharacters.value)
+        templateCard.querySelector('#title-card').textContent = array2[0].name
+        templateCard.querySelector('#p-card-gender').textContent = array2[0].gender
+        templateCard.querySelector('#p-card-status').textContent = array2[0].status
+        templateCard.querySelector('#img-card').src = array2[0].image
+    
         const clone = templateCard.cloneNode(true)
         fragment.appendChild(clone)
-    });
+    
+        cards.appendChild(fragment)
 
-    cards.appendChild(fragment)
+    }
 
+}
+
+const SelectOption = array1 => {
+
+    array1.forEach(data => {
+        const option= document.createElement('option')
+        option.setAttribute('value', data.name)
+        option.textContent=data.name
+        fragment.appendChild(option)
+    })
+
+    changeCharacters.appendChild(fragment)
+    showCards(array1)
+    changeCharacters.addEventListener('change', function (){
+        showCards(array1)
+    })
+    
 }
 
 function FetchApi() {
 
     fetch(URL)
     .then(response => response.json())
-    .then(cards => {
-        mainCard.innerHTML = ''
-        showCards(cards)
+    .then(characters => {
+        cards.innerHTML = ''
+        const arrayCharacters = characters.results
+        SelectOption(arrayCharacters)
     })
 
 }
