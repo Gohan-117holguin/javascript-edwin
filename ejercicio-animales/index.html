@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>ANIMALES</h1>
+        <ul>
+            <li class="opciones">
+                <button class="eleccion" id="btn_eleccion1">Animales con B</button>
+            </li>
+            <li class="opciones">
+                <button class="eleccion" id="btn_eleccion2">Animales con mas de 5 años</button>
+            </li>
+            <li class="opciones">
+                <button class="eleccion" id="btn_eleccion3">Animales tipo ave de 10 años</button>
+            </li>
+            <li class="opciones">
+                <button class="eleccion" id="btn_eleccion4">Animales mamiferos negros</button>
+            </li>
+            <li class="opciones">
+                <button class="eleccion" id="btn_eleccion5">Animales no color blanco</button>
+            </li>
+        </ul>
+    </header>
+
+    <main>
+        <h2>Revisar la consola en el boton 4 y 5 :)</h2>
+        <div class="card" id="card"></div>
+    </main>
+
+    <template id="template_card">
+        <div class="card_body">
+            <h2 class="contenido_card" id="nombre_card">name</h2>
+            <p class="contenido_card" id="tipo_card">type</p>
+            <p class="contenido_card" id="edad_card">age</p>
+            <p class="contenido_card" id="color_card">color</p>
+        </div>
+    </template>
+    
+    <script src="app.js"></script>
+</body>
+</html>
